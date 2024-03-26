@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 10:21:27 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/03/20 16:09:22 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/03/26 13:58:49 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_read(char *s, int fd)
 	if (!buf)
 		return (NULL);
 	r = 1;
-	while (ft_strchr(s, '\n') == NULL && r != 0)
+	while (gnl_strchr(s, '\n') == NULL && r != 0)
 	{
 		r = read(fd, buf, BUFFER_SIZE);
 		if (r == -1)
@@ -30,7 +30,7 @@ char	*ft_read(char *s, int fd)
 			return (NULL);
 		}
 		buf[r] = '\0';
-		s = ft_strjoin(s, buf);
+		s = gnl_strjoin(s, buf);
 	}
 	free(buf);
 	return (s);
@@ -45,12 +45,12 @@ char	*change_the_static(char *s)
 	l = 0;
 	while (s[l] != '\n' && s[l] != '\0')
 		l++;
-	if (ft_strlen(s) == l)
+	if (gnl_strlen(s) == l)
 	{
 		free(s);
 		return (NULL);
 	}
-	news = (char *)malloc((ft_strlen(s) - l + 1) * sizeof(char));
+	news = (char *)malloc((gnl_strlen(s) - l + 1) * sizeof(char));
 	if (news == NULL)
 		return (NULL);
 	i = 0;
@@ -105,3 +105,36 @@ char	*get_next_line(int fd)
 	return (buf);
 }
 
+/*int	main(void)
+{
+	int	fd;
+
+	fd = open("texto.txt", O_RDONLY);
+	printf("%s", get_next_line(fd));
+	printf("------\n");
+	printf("%s", get_next_line(fd));
+	printf("------\n");
+	printf("%s", get_next_line(fd));
+	printf("------\n");
+	printf("%s", get_next_line(fd));
+	printf("------\n");
+	printf("%s", get_next_line(fd));
+	printf("------\n");
+	printf("%s", get_next_line(fd));
+	printf("------\n");
+	printf("%s", get_next_line(fd));
+	printf("------\n");
+	printf("%s", get_next_line(fd));
+	printf("------\n");
+	printf("%s", get_next_line(fd));
+	printf("------\n");
+	printf("%s", get_next_line(fd));
+	printf("------\n");
+	printf("%s", get_next_line(fd));
+	printf("------\n");
+	printf("%s", get_next_line(fd));
+	printf("------\n");
+
+
+	close(fd);
+}*/
