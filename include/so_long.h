@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:33:33 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/03/26 14:54:13 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/02 13:01:36 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 typedef struct s_parameters
 {
+	char 				*map_path;
 	int 				map_len;
 	int 				map_heigth;
-	char				*map_str;
 	char				**map;
 	char				**map_phill;
 }						t_params;
