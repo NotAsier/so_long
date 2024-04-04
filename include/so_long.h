@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:33:33 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/02 13:01:36 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/04 13:16:31 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,17 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-#include "../libs/libft/libft.h"
-#include "../libs/get_next_line/get_next_line.h"
+# include "../libs/libft/libft.h"
+# include "../libs/get_next_line/get_next_line.h"
 
 typedef struct s_parameters
 {
-	char 				*map_path;
-	int 				map_len;
-	int 				map_heigth;
-	char				**map;
-	char				**map_phill;
-}						t_params;
-
-
-
+	char	*map_path;
+	char	*map_name;
+	int		map_len;
+	int		map_heigth;
+	char	**map;
+	char	**map_phill;
+}			t_params;
 
 #endif // SO_LONG_H
