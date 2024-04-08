@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:33:33 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/04 13:16:31 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/08 17:09:17 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,12 @@ typedef struct s_parameters
 	char	**map;
 	char	**map_phill;
 }			t_params;
+
+void	error(char *message);
+void	parse_map(t_params *params);
+void	map_walls(t_params *params);
+void	dump_map(t_params *params);
+void	ber_check(t_params *params);
+void	check_char_map(t_params *params);
 
 #endif // SO_LONG_H
