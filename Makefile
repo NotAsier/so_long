@@ -6,7 +6,7 @@
 #    By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 10:56:30 by aarranz-          #+#    #+#              #
-#    Updated: 2024/04/04 12:13:10 by aarranz-         ###   ########.fr        #
+#    Updated: 2024/04/08 17:20:48 by aarranz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,17 +17,20 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3 -Iinclude #-fsanitize=address
 RM = /bin/rm -rf
 
+INCLUDE = so_long.h
+
 LIBFT = libs/libft/
 GNL = libs/get_next_line/
 
 SRC_PATH	=	src/
-SRC =	so_long.c
+
+SRC =	so_long.c map_checker.c
 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(INCLUDE)
 	$(MAKE) -C $(LIBFT)
 	$(MAKE) -C $(GNL)
 #	$(MAKE) -C $(MLX) 2> /dev/null
