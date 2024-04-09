@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 13:12:10 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/08 16:10:22 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/09 13:21:49 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,20 @@ void	map_walls(t_params *params)
 
 	i = 0;
 	j = 0;
-	while (params->map[0][j] != '1'
-	&& params->map[params->map_heigth][j] != '1')
+	/*while (params->map[0][j])
 	{
-		error("map walls not valid");
-		j++;
-	}
-	while (params->map[i][0] != '1'
-	&& params->map[i][strlen(params->map)] != '1')
+		if (params->map[0][j] != '1'
+		|| params->map[params->map_heigth][j] != '1')
+		{
+			error("map walls not valid");
+			j++;
+		}
+	}*/
+	while (params->map[i][0])
 	{
-		error("map walls not valid");
+		if (params->map[i][0] != '1'
+		|| params->map[i][ft_strlen(params->map[i])] != '1')
+			error("map side walls not valid");
 		i++;
 	}
 }
