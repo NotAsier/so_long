@@ -5,56 +5,46 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/26 10:56:30 by aarranz-          #+#    #+#              #
-#    Updated: 2024/04/08 17:20:48 by aarranz-         ###   ########.fr        #
+#    Created: 2024/04/09 11:33:45 by aarranz-          #+#    #+#              #
+#    Updated: 2024/04/09 12:48:07 by aarranz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
-
-CC = gcc
-# -Imlx abajo
-CFLAGS = -Wall -Wextra -Werror -g3 -Iinclude #-fsanitize=address
-RM = /bin/rm -rf
-
-INCLUDE = so_long.h
+NAME		:=	so_long
+SRC_PATH	:=	src
+OBJ_DIR		:=	obj
+SOURCES		:=	so_long.c map_checker.c
+OBJS		:=	$(SOURCES:%.c=$(OBJ_DIR)/%.o)
+CC			:=	gcc
+CFLAGS		:=	-Wall -Wextra -Werror -I./include
 
 LIBFT = libs/libft/
 GNL = libs/get_next_line/
 
-SRC_PATH	=	src/
-
-SRC =	so_long.c map_checker.c
-
-OBJ = $(SRC:.c=.o)
-
 all: $(NAME)
 
-$(NAME): $(OBJ) $(INCLUDE)
+$(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT)
 	$(MAKE) -C $(GNL)
 #	$(MAKE) -C $(MLX) 2> /dev/null
 	mv $(LIBFT)libft.a ./
 	mv $(GNL)get_next_line.a ./
-#	cp $(MLX)libmlx.a ./
-# -Lmlx -framework OpenGL -framework AppKit libmlx.a abajo
-	$(CC) -o $(NAME) $(OBJ) libft.a get_next_line.a
-#	echo "$$SO_LONG"
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) libft.a get_next_line.a
 
-$(OBJ): $(SRC_PATH)$(SRC)
-	$(CC) $(CFLAGS) -c $(SRC_PATH)$(SRC)
+$(OBJ_DIR):
+	@mkdir $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: $(SRC_PATH)/%.c $(OBJ_DIR)
+	@$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	$(RM) $(OBJ)
+	@rm -fr $(OBJ_DIR)
 	$(MAKE) -C $(LIBFT) clean
 	$(MAKE) -C $(GNL) clean
-#	$(MAKE) -C $(MLX) clean
-	echo "objs deleted"
 
-fclean: clean
-	$(RM) $(NAME) libft.a get_next_line.a 
-#	libmlx.a arriba
-	echo "executable deleted"
+fclean:
+	@rm -fr $(OBJ_DIR)
+	@rm -f $(NAME) libft.a get_next_line.a 
 
 re: fclean all
 
