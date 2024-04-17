@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 13:12:10 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/09 13:21:49 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:28:32 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,20 @@ void	map_walls(t_params *params)
 
 	i = 0;
 	j = 0;
-	/*while (params->map[0][j])
-	{
-		if (params->map[0][j] != '1'
-		|| params->map[params->map_heigth][j] != '1')
-		{
-			error("map walls not valid");
-			j++;
-		}
-	}*/
-	while (params->map[i][0])
+	params->map_len = ft_strlen(params->map[i]) - 2;
+	while (params->map[i])
 	{
 		if (params->map[i][0] != '1'
-		|| params->map[i][ft_strlen(params->map[i])] != '1')
+		|| params->map[i][params->map_len] != '1')
 			error("map side walls not valid");
 		i++;
+		while (j < params->map_len)
+		{
+			if (params->map[0][j] != '1'
+			|| params->map[params->map_heigth - 1][j] != '1')
+				error("map top or floor walls not valid");
+			j++;
+		}
 	}
 }
 
@@ -85,7 +84,7 @@ void	check_char_map(t_params *params)
 	while (row < params->map_heigth)
 	{
 		col = 0;
-		printf("%d, %s", row, params->map[row]);
+		printf("%d, \t %s", row, params->map[row]);
 		while (params->map[row][col])
 		{
 			if (params->map[row][col] != '1'
@@ -100,3 +99,18 @@ void	check_char_map(t_params *params)
 		row++;
 	}
 }
+
+/*void	count_lines_map(t_params *params)
+{
+	int	i;
+
+	i = 0;
+	/*printf("\n%i", params->map_len);
+	printf("\n%zu", ft_strlen(params->map[i])-2);*/
+	while (params->map[i])
+	{
+		if ((int)ft_strlen(params->map[i]) - 2 != params->map_len)
+			error("map char count in lines not valid");
+		i++;
+	}
+}*/

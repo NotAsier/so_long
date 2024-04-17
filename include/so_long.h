@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:33:33 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/08 17:09:17 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/17 14:32:38 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	map_walls(t_params *params);
 void	dump_map(t_params *params);
 void	ber_check(t_params *params);
 void	check_char_map(t_params *params);
+void	count_lines_map(t_params *params);
 
 #endif // SO_LONG_H
