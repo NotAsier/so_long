@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:31:33 by aarranz-          #+#    #+#             */
-/*   Updated: 2023/05/26 13:05:07 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/19 10:11:56 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	write_str(char *str, size_t size, int value)
 	{
 		value *= -1;
 	}
-str[size] = '\0';
+	str[size] = '\0';
 	while (size--)
 	{
 		str[size] = (value % 10) + 48;
