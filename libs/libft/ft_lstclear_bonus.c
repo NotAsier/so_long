@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:35:15 by aarranz-          #+#    #+#             */
-/*   Updated: 2023/05/29 09:42:00 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/19 10:11:33 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	{
 		node = *lst;
 		while (node)
-		{	
+		{
 			temp = node->next;
 			del(node->content);
 			free(node);

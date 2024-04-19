@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 13:12:10 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/17 16:28:32 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/19 12:13:06 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,17 +100,17 @@ void	check_char_map(t_params *params)
 	}
 }
 
-/*void	count_lines_map(t_params *params)
+void	count_lines_len_map(t_params *params)
 {
 	int	i;
 
 	i = 0;
-	/*printf("\n%i", params->map_len);
-	printf("\n%zu", ft_strlen(params->map[i])-2);*/
 	while (params->map[i])
 	{
-		if ((int)ft_strlen(params->map[i]) - 2 != params->map_len)
+		if ((params->map[i][params->map_len] != '1')
+			|| (params->map[i][params->map_len + 1] != '\n'
+			&& params->map[i][params->map_len + 1] != '\0'))
 			error("map char count in lines not valid");
 		i++;
 	}
-}*/
+}

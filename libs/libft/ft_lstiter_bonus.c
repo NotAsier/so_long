@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 11:04:32 by aarranz-          #+#    #+#             */
-/*   Updated: 2023/05/29 09:43:26 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/19 10:11:39 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		{
 			f(lst->content);
 			lst = lst->next;
-		}	
+		}
 		f(lst->content);
 	}
 }

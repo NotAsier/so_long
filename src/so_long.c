@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:30:41 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/17 14:47:43 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/19 11:22:35 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	parse_map(t_params *params)
 	dump_map(params);
 	check_char_map(params);
 	map_walls(params);
-	count_lines_map(params);
+	count_lines_len_map(params);
 }
 
 int	main(int argc, char **argv)
