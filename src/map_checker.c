@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 13:12:10 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/19 12:13:06 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/23 15:54:42 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	check_char_map(t_params *params)
 	while (row < params->map_heigth)
 	{
 		col = 0;
-		printf("%d, \t %s", row, params->map[row]);
+//		printf("%d, \t %s", row, params->map[row]);
 		while (params->map[row][col])
 		{
 			if (params->map[row][col] != '1'
