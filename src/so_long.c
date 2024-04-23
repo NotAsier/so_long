@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:30:41 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/19 11:22:35 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/23 15:53:29 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,24 @@ void	error(char *message)
 	exit (1);
 }
 
+void	prueba_fill(t_params *params)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (params->map_filled[i])
+	{
+		j = 0;
+		while (j <= params->map_len)
+		{
+			printf("%i", params->map_filled[i][j]);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	parse_map(t_params *params)
 {
 	ber_check(params);
@@ -27,6 +45,9 @@ void	parse_map(t_params *params)
 	check_char_map(params);
 	map_walls(params);
 	count_lines_len_map(params);
+	char_counter(params);
+	flood_fill(params, params->player_y, params->player_x);
+	prueba_fill(params);
 }
 
 int	main(int argc, char **argv)
