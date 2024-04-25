@@ -6,7 +6,7 @@
 #    By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 11:33:45 by aarranz-          #+#    #+#              #
-#    Updated: 2024/04/23 11:52:07 by aarranz-         ###   ########.fr        #
+#    Updated: 2024/04/25 10:58:38 by aarranz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,8 @@ clean:
 	$(MAKE) -C $(GNL) clean
 
 fclean:
+	$(MAKE) -C $(LIBFT) fclean
+	$(MAKE) -C $(GNL) fclean
 	@rm -fr $(OBJ_DIR)
 	@rm -f $(NAME) libft.a get_next_line.a 
 
