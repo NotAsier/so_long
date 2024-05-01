@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:30:41 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/30 13:15:35 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/05/01 10:40:31 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_fd(t_params *params)
 	res = NULL;
 	params->fd = open(params->map_path, O_RDONLY);
 	res = get_next_line(params->fd);
-	if (!res || ft_strlen(res) < 6 || res[0] == '\n')
+	if (!res || ft_strlen(res) < 3 || res[0] == '\n')
 	{
 		close(params->fd);
 		error("file can't open");
