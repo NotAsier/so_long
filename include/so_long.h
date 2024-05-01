@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:33:33 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/30 13:13:02 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:39:20 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@
 
 typedef struct s_mlx
 {
-	int		*look_at;
+	int		win;
+	int		moves;
+	int		look_at;
 	void	*mlx;
 	void	*window;
-	void	*up;
-	void	*left;
-	void	*rigth;
-	void	*down;
+	void	*player;
 	void	*floor;
 	void	*wall;
 	void	*exit;
+	void	*exit2;
 	void	*coin;
 }			t_mlx;
 
@@ -76,6 +76,9 @@ void	init_mlx(t_params *params);
 void	mlx_initializer(t_params *params);
 void	window_draw(t_params *params);
 void	image_selector(t_params *params, int x, int y);
+void	image_selector2(t_params *params, int x, int y);
 void	mlx_add_xpm(t_params *params);
+int		key_tracker(int keypressed, t_params *params);
+void	move(t_params *params, int i, int j);
 
 #endif // SO_LONG_H
