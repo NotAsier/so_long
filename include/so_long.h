@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:33:33 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/25 10:16:19 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/30 13:13:02 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,24 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include "../mlx/mlx.h"
 # include "../libs/libft/libft.h"
 # include "../libs/get_next_line/get_next_line.h"
+
+typedef struct s_mlx
+{
+	int		*look_at;
+	void	*mlx;
+	void	*window;
+	void	*up;
+	void	*left;
+	void	*rigth;
+	void	*down;
+	void	*floor;
+	void	*wall;
+	void	*exit;
+	void	*coin;
+}			t_mlx;
 
 typedef struct s_parameters
 {
@@ -34,8 +50,12 @@ typedef struct s_parameters
 	char	*map_name;
 	char	**map;
 	char	**map_filled;
+	t_mlx	*mlx;
 }			t_params;
 
+//------------------------------------------------------------------------------
+//			PARSE MAP
+//------------------------------------------------------------------------------
 void	init(t_params *params);
 void	check_fd(t_params *params);
 void	error(char *message);
@@ -49,5 +69,13 @@ void	char_counter(t_params *params);
 void	flood_fill(t_params *params, int y, int x);
 void	filled_map_checker(t_params *params);
 void	dump_filled_map(t_params *params);
+//------------------------------------------------------------------------------
+//			INIT MLX
+//------------------------------------------------------------------------------
+void	init_mlx(t_params *params);
+void	mlx_initializer(t_params *params);
+void	window_draw(t_params *params);
+void	image_selector(t_params *params, int x, int y);
+void	mlx_add_xpm(t_params *params);
 
 #endif // SO_LONG_H

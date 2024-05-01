@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:30:41 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/25 10:22:19 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/04/30 13:15:35 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init(t_params *params)
 	params->exit_count = 0;
 	params->map_len = 0;
 	params->map_heigth = 0;
+	params->mlx = NULL;
 	params->map_path = NULL;
 	params->map_name = NULL;
 	params->map = NULL;
@@ -35,7 +36,7 @@ void	check_fd(t_params *params)
 	res = NULL;
 	params->fd = open(params->map_path, O_RDONLY);
 	res = get_next_line(params->fd);
-	if (!res)
+	if (!res || ft_strlen(res) < 6 || res[0] == '\n')
 	{
 		close(params->fd);
 		error("file can't open");
@@ -71,12 +72,13 @@ int	main(int argc, char **argv)
 {
 	t_params	*params;
 
+	if (argc != 2)
+		return (-1);
 	params = malloc(sizeof(t_params));
 	init(params);
 	params->map_path = ft_strdup(argv[1]);
-	if (argc == 2)
-	{
-		parse_map(params);
-	}
+	parse_map(params);
+	mlx_initializer(params);
+	init_mlx(params);
 	return (0);
 }
