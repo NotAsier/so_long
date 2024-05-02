@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:55:57 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/04/25 10:18:39 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:54:46 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,21 @@ void	char_counter(t_params *params)
 	if (params->player_count != 1
 		|| params->exit_count != 1
 		|| params->coin_count < 1)
-		error("map char counter not valid");
+		error("map char counter not valid", params);
+}
+
+void	dump_filled_map(t_params *params)
+{
+	int	i;
+
+	i = 0;
+	params->map_filled = malloc(sizeof(char *) * params->map_heigth + 1);
+	while (params->map[i])
+	{
+		params->map_filled[i] = ft_strdup(params->map[i]);
+		i++;
+	}
+	params->map_filled[i] = NULL;
 }
 
 void	filled_map_checker(t_params *params)
@@ -54,22 +68,9 @@ void	filled_map_checker(t_params *params)
 		{
 			if (params->map_filled[i][j] != '0'
 				&& params->map_filled[i][j] != '1')
-				error("map is not playable");
+				error("map is not playable", params);
 			j++;
 		}
-		i++;
-	}
-}
-
-void	dump_filled_map(t_params *params)
-{
-	int	i;
-
-	i = 0;
-	params->map_filled = malloc(sizeof(char *) * params->map_heigth + 1);
-	while (params->map[i])
-	{
-		params->map_filled[i] = ft_strdup(params->map[i]);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:33:33 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/05/01 18:39:20 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:52:56 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 typedef struct s_mlx
 {
 	int		win;
-	int		moves;
-	int		look_at;
 	void	*mlx;
 	void	*window;
 	void	*player;
@@ -39,6 +37,7 @@ typedef struct s_mlx
 typedef struct s_parameters
 {
 	int		fd;
+	int		moves;
 	int		player_x;
 	int		player_y;
 	int		player_count;
@@ -58,7 +57,7 @@ typedef struct s_parameters
 //------------------------------------------------------------------------------
 void	init(t_params *params);
 void	check_fd(t_params *params);
-void	error(char *message);
+void	error(char *message, t_params *params);
 void	parse_map(t_params *params);
 void	map_walls(t_params *params);
 void	dump_map(t_params *params);
@@ -80,5 +79,10 @@ void	image_selector2(t_params *params, int x, int y);
 void	mlx_add_xpm(t_params *params);
 int		key_tracker(int keypressed, t_params *params);
 void	move(t_params *params, int i, int j);
+//------------------------------------------------------------------------------
+//			LEAKS CONTROL
+//------------------------------------------------------------------------------
+void	free_map(t_params *params);
+int		red_cross(t_params *params);
 
 #endif // SO_LONG_H
