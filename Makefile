@@ -6,14 +6,14 @@
 #    By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 11:33:45 by aarranz-          #+#    #+#              #
-#    Updated: 2024/05/01 17:41:26 by aarranz-         ###   ########.fr        #
+#    Updated: 2024/05/02 11:20:37 by aarranz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	so_long
 SRC_PATH	:=	src
 OBJ_DIR		:=	obj
-SOURCES		:=	so_long.c map_checker.c map_checker2.c mlx.c movements.c
+SOURCES		:=	so_long.c map_checker.c map_checker2.c mlx.c movements.c free_leaks.c
 OBJS		:=	$(SOURCES:%.c=$(OBJ_DIR)/%.o)
 CC			:=	gcc
 CFLAGS		:=	-Wall -Wextra -Werror -I./include -Imlx -g3 #-fsanitize=address

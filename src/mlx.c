@@ -6,32 +6,11 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:58:00 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/05/01 18:39:46 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:49:06 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	window_draw(t_params *params)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (params->map[y])
-	{
-		x = 0;
-		while (params->map[y][x])
-		{
-			mlx_put_image_to_window(params->mlx->mlx, \
-			params->mlx->window, \
-			params->mlx->floor, x * 16, y * 16);
-			image_selector(params, x, y);
-			x++;
-		}
-		y++;
-	}
-}
 
 void	mlx_initializer(t_params *params)
 {
@@ -39,8 +18,6 @@ void	mlx_initializer(t_params *params)
 
 	mlx = malloc(sizeof(t_mlx));
 	mlx->win = 0;
-	mlx->moves = 0;
-	mlx->look_at = 0;
 	mlx->wall = NULL;
 	mlx->window = NULL;
 	mlx->player = NULL;
@@ -117,5 +94,6 @@ void	init_mlx(t_params *params)
 	mlx_add_xpm(params);
 	window_draw(params);
 	mlx_key_hook(params->mlx->window, key_tracker, params);
+	mlx_hook(params->mlx->window, 17, 0, red_cross, params);
 	mlx_loop(params->mlx->mlx);
 }

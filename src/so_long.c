@@ -6,7 +6,7 @@
 /*   By: aarranz- <aarranz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:30:41 by aarranz-          #+#    #+#             */
-/*   Updated: 2024/05/01 10:40:31 by aarranz-         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:15:07 by aarranz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	init(t_params *params)
 {
 	params->fd = 0;
+	params->moves = 0;
 	params->player_x = 0;
 	params->player_y = 0;
 	params->player_count = 0;
@@ -39,18 +40,19 @@ void	check_fd(t_params *params)
 	if (!res || ft_strlen(res) < 3 || res[0] == '\n')
 	{
 		close(params->fd);
-		error("file can't open");
+		error("file can't open", params);
 	}
 	free(res);
 	close(params->fd);
 }
 
-void	error(char *message)
+void	error(char *message, t_params *params)
 {
 	write(2, "Error\n", 6);
 	write(2, message, ft_strlen(message));
 	write(2, "\n", 1);
-	exit (1);
+	free_map(params);
+	exit(0);
 }
 
 void	parse_map(t_params *params)
@@ -65,7 +67,6 @@ void	parse_map(t_params *params)
 	dump_filled_map(params);
 	flood_fill(params, params->player_y, params->player_x);
 	filled_map_checker(params);
-	printf("okia\n");
 }
 
 int	main(int argc, char **argv)
